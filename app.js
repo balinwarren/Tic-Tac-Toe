@@ -7,9 +7,12 @@ const gameBoard = (() => {
             let square = document.getElementById(num);
             squareArr.push(square);
         }
+        console.log(squareArr);
     }
     
     return {
         buildBoard
     };
 })();
+
+gameBoard.buildBoard();
