@@ -49,6 +49,8 @@ body{
 }
 
 .game-pieces > div {
+    width: 113.33px;
+    height: 113.33px;
     background-color: white;
     padding: 5px;
     display: flex;
