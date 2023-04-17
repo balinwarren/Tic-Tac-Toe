@@ -76,3 +76,38 @@ body{
 .o {
     color: cornflowerblue;
 }
+
+.winContainer {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    background-color: none;
+    text-align: center;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.2s ease-in-out;
+  }
+
+  .winContainer > h3 {
+    font-size: 56px;
+    color: white;
+  }
+  
+  .winContainer.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .overlay.active {
+    display: block;
+  }
