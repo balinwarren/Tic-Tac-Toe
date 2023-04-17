@@ -39,7 +39,7 @@ const gameTracker = (() => {
     }
 
     const doTurn = () => {
-        if(turnCount >= 6) {
+        if(turnCount >= 5) {
             checkWin();
         }
 
@@ -60,22 +60,22 @@ const gameTracker = (() => {
             }
         }
 
-        if (marksArr[0] == marksArr[1] && marksArr[1] == marksArr[2]) {
-            console.log(`The winner is ${marksArr[0]}`);
-        } else if (marksArr[3] == marksArr[4] && marksArr[4] == marksArr[5]) {
-            console.log(`The winner is ${marksArr[3]}`);
-        } else if (marksArr[6] == marksArr[7] && marksArr[7] == marksArr[8]) {
-            console.log(`The winner is ${marksArr[6]}`);
-        } else if (marksArr[0] == marksArr[3] && marksArr[3] == marksArr[6]) {
-            console.log(`The winner is ${marksArr[0]}`);
-        } else if (marksArr[1] == marksArr[4] && marksArr[4] == marksArr[7]) {
+        if (marksArr[0] == marksArr[1] && marksArr[1] == marksArr[2] && marksArr[2] != 'null') {
             console.log(`The winner is ${marksArr[1]}`);
-        } else if (marksArr[2] == marksArr[5] && marksArr[5] == marksArr[8]) {
-            console.log(`The winner is ${marksArr[2]}`);
-        } else if (marksArr[0] == marksArr[4] && marksArr[4] == marksArr[8]) {
-            console.log(`The winner is ${marksArr[0]}`);
-        } else if (marksArr[2] == marksArr[4] && marksArr[4] == marksArr[6]) {
-            console.log(`The winner is ${marksArr[2]}`);
+        } else if (marksArr[3] == marksArr[4] && marksArr[4] == marksArr[5] && marksArr[5] != 'null') {
+            console.log(`The winner is ${marksArr[4]}`);
+        } else if (marksArr[6] == marksArr[7] && marksArr[7] == marksArr[8] && marksArr[8] != 'null') {
+            console.log(`The winner is ${marksArr[7]}`);
+        } else if (marksArr[0] == marksArr[3] && marksArr[3] == marksArr[6] && marksArr[6] != 'null') {
+            console.log(`The winner is ${marksArr[3]}`);
+        } else if (marksArr[1] == marksArr[4] && marksArr[4] == marksArr[7] && marksArr[7] != 'null') {
+            console.log(`The winner is ${marksArr[4]}`);
+        } else if (marksArr[2] == marksArr[5] && marksArr[5] == marksArr[8] && marksArr[8] != 'null') {
+            console.log(`The winner is ${marksArr[5]}`);
+        } else if (marksArr[0] == marksArr[4] && marksArr[4] == marksArr[8] && marksArr[8] != 'null') {
+            console.log(`The winner is ${marksArr[4]}`);
+        } else if (marksArr[2] == marksArr[4] && marksArr[4] == marksArr[6] && marksArr[6] != 'null') {
+            console.log(`The winner is ${marksArr[4]}`);
         } else if (turnCount == 9) {
             console.log("It's a tie!")
         }
