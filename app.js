@@ -1,5 +1,7 @@
 const gameBoard = (() => {
     const squareArr = [];
+    const winContainer = document.getElementById('win-container');
+    const overlay = document.getElementById('overlay');
 
     const buildBoard = () => {
         for (let i = 0; i < 9; i++) {
@@ -11,14 +13,32 @@ const gameBoard = (() => {
         console.log(squareArr);
     }
 
+    const resetBoard = () => {
+        winContainer.classList.remove('active');
+        overlay.classList.remove('active');
+
+        for(let i = 0; i < 9; i++){
+            let num = i.toString();
+            let square = document.getElementById(num);
+            
+            while(square.firstChild) {
+                square.removeChild(square.lastChild);
+            }
+        }
+    }
+
     return {
         buildBoard,
-        squareArr
+        squareArr,
+        resetBoard
     };
 })();
 
 const gameTracker = (() => {
     let turnCount = 1;
+    const winContainer = document.getElementById('win-container');
+    const winText = document.getElementById('win-text');
+    const overlay = document.getElementById('overlay');
 
     const addMarks = (index) => {
         let square = document.getElementById(index);
@@ -62,27 +82,56 @@ const gameTracker = (() => {
 
         if (marksArr[0] == marksArr[1] && marksArr[1] == marksArr[2] && marksArr[2] != 'null') {
             console.log(`The winner is ${marksArr[1]}`);
+            showWin(marksArr[1]);
         } else if (marksArr[3] == marksArr[4] && marksArr[4] == marksArr[5] && marksArr[5] != 'null') {
             console.log(`The winner is ${marksArr[4]}`);
+            showWin(marksArr[4]);
         } else if (marksArr[6] == marksArr[7] && marksArr[7] == marksArr[8] && marksArr[8] != 'null') {
             console.log(`The winner is ${marksArr[7]}`);
+            showWin(marksArr[7]);
         } else if (marksArr[0] == marksArr[3] && marksArr[3] == marksArr[6] && marksArr[6] != 'null') {
             console.log(`The winner is ${marksArr[3]}`);
+            showWin(marksArr[3]);
         } else if (marksArr[1] == marksArr[4] && marksArr[4] == marksArr[7] && marksArr[7] != 'null') {
             console.log(`The winner is ${marksArr[4]}`);
+            showWin(marksArr[4]);
         } else if (marksArr[2] == marksArr[5] && marksArr[5] == marksArr[8] && marksArr[8] != 'null') {
             console.log(`The winner is ${marksArr[5]}`);
+            showWin(marksArr[5]);
         } else if (marksArr[0] == marksArr[4] && marksArr[4] == marksArr[8] && marksArr[8] != 'null') {
             console.log(`The winner is ${marksArr[4]}`);
+            showWin(marksArr[4]);
         } else if (marksArr[2] == marksArr[4] && marksArr[4] == marksArr[6] && marksArr[6] != 'null') {
             console.log(`The winner is ${marksArr[4]}`);
+            showWin(marksArr[4]);
         } else if (turnCount == 9) {
-            console.log("It's a tie!")
+            console.log("It's a tie!");
+            showTie();
         }
     }
 
+    const showWin = (winner) => {
+        winText.innerHTML = `The winner is ${winner}!`;
+        winContainer.classList.add('active');
+        overlay.classList.add('active');
+    }
+
+    const showTie = () => {
+        winText.innerHTML = "It's a tie!";
+        winContainer.classList.add('active');
+        overlay.classList.add('active');
+    }
+
+    const gameReset = () => {
+        gameBoard.resetBoard();
+        turnCount = 1;
+    }
+
+    overlay.onclick = gameReset;
+    
     return {
         addMarks,
+        turnCount
     }
 })();
 
