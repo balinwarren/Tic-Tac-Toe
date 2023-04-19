@@ -42,20 +42,23 @@ const gameTracker = (() => {
 
     const addMarks = (index) => {
         let square = document.getElementById(index);
-
-        if(turnCount % 2 == 0){
-            let mark = document.createElement('h3');
-            mark.classList.add('o');
-            mark.innerHTML = 'O';
-            square.appendChild(mark);
+        if(square.firstElementChild) {
+            console.log("This square is occupied")
         } else {
-            let mark = document.createElement('h3');
-            mark.classList.add('x');
-            mark.innerHTML = 'X';
-            square.appendChild(mark);
-        }
+            if(turnCount % 2 == 0){
+                let mark = document.createElement('h3');
+                mark.classList.add('o');
+                mark.innerHTML = 'O';
+                square.appendChild(mark);
+            } else {
+                let mark = document.createElement('h3');
+                mark.classList.add('x');
+                mark.innerHTML = 'X';
+                square.appendChild(mark);
+            }
 
-        doTurn();
+            doTurn();
+        }
     }
 
     const doTurn = () => {
