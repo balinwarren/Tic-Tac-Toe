@@ -137,7 +137,8 @@ const gameTracker = (() => {
     
     return {
         addMarks,
-        turnCount
+        turnCount,
+        gameReset
     }
 })();
 
@@ -174,7 +175,14 @@ const buttonManager = (() => {
     const resetScoreBtn = document.getElementById('reset-score');
     const resetBothBtn = document.getElementById('reset-both');
 
+    const resetBoth = () => {
+        scoreBoard.reset();
+        gameTracker.gameReset();
+    }
+
     resetScoreBtn.onclick = scoreBoard.reset;
+    resetBoardBtn.onclick = gameTracker.gameReset;
+    resetBothBtn.onclick = resetBoth;
 })();
 
 gameBoard.buildBoard();
