@@ -114,6 +114,12 @@ const gameTracker = (() => {
         winText.innerHTML = `The winner is ${winner}!`;
         winContainer.classList.add('active');
         overlay.classList.add('active');
+
+        if (winner == 'X') {
+            scoreBoard.addXWin();
+        } else if (winner == 'O') {
+            scoreBoard.addOWin();
+        }
     }
 
     const showTie = () => {
@@ -133,6 +139,42 @@ const gameTracker = (() => {
         addMarks,
         turnCount
     }
+})();
+
+const scoreBoard = (() => {
+    const xScore = document.getElementById('x-score');
+    const oScore = document.getElementById('o-score');
+
+    const addXWin = () => {
+        let num = Number(xScore.innerHTML);
+        num++;
+        xScore.innerHTML = num.toString();
+    }
+
+    const addOWin = () => {
+        let num = Number(oScore.innerHTML);
+        num++;
+        oScore.innerHTML = num.toString();
+    }
+
+    const reset = () => {
+        oScore.innerHTML = '0';
+        xScore.innerHTML = '0';
+    }
+
+    return {
+        addXWin,
+        addOWin,
+        reset
+    }
+})();
+
+const buttonManager = (() => {
+    const resetBoardBtn = document.getElementById('reset-board');
+    const resetScoreBtn = document.getElementById('reset-score');
+    const resetBothBtn = document.getElementById('reset-both');
+
+    resetScoreBtn.onclick = scoreBoard.reset;
 })();
 
 gameBoard.buildBoard();
